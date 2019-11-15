@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,10 +13,16 @@
  */
 public class ChatPanel extends javax.swing.JFrame {
 
+    public ArrayList<String> user = new ArrayList<>();
+    String indirizzo;
+        
+    @SuppressWarnings("empty-statement")
+    
     /**
      * Creates new form ChatPanel
      */
     public ChatPanel() {
+        show();
         initComponents();
     }
 
@@ -52,6 +61,11 @@ public class ChatPanel extends javax.swing.JFrame {
         textBox.setText("Scrivi un messaggio");
 
         sendButton.setText("Send");
+        sendButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,16 +109,27 @@ public class ChatPanel extends javax.swing.JFrame {
        t1.getUser(0);
     }//GEN-LAST:event_titleUserActionPerformed
 
+    private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
+        userInput = stdIn.readLine();
+                if (userInput.equals("quit")) {
+                    out.println(str + " ha abbandonato la chat ");
+                    out.println("quit");
+                    break;
+                }
+                out.println(str + ": " + userInput);
+    }//GEN-LAST:event_sendButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    /***
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
+        /*try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -123,12 +148,13 @@ public class ChatPanel extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ChatPanel().setVisible(true);
             }
         });
     }
+    ***/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
