@@ -5,31 +5,30 @@ import java.util.ArrayList;
 
     public class EchoClient {
     
-    
+    public ArrayList<String> user = new ArrayList<>();
+    String indirizzo;
+        
     @SuppressWarnings("empty-statement")
-    public static void main(String[] args) throws IOException {
+    
+    public EchoClient(){}
+    
+    public EchoClient(String str) throws IOException {
         /* Lanciando il programma senza argomenti si ottiene il local loopback IP address, per testarlo in locale (client e server
 sulla stessa macchina), altrimenti si possono passare da linea di comando l’indirizzo IP o il nome della macchina
 remota */
-        ArrayList<String> user;
-        user = new ArrayList<>();
-        String indirizzo;
-        if (args.length == 0) {
-            indirizzo = "172.18.3.168";
-        } else {
-            indirizzo = "172.18.3.168";
-        }
+
+        indirizzo = "172.16.3.226";
+        
         try {
 // creazione socket
             Socket socket = new Socket(indirizzo, EchoServer.PORT);
             System.out.println("EchoClient: avviato");
             System.out.println("Socket del client: " + socket);
-            System.out.print("Username: ");
-            String str;
+// creazione dell'utente
             String userInput;
             
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-            str = stdIn.readLine();
+            // input str = stdIn.readLine();
             user.add(str);
 // creazione stream di input da socket
             /*InputStreamReader isr = new InputStreamReader(socket.getInputStream());
@@ -72,4 +71,10 @@ remota */
         }
         System.out.println("EchoClient: passo e chiudo...");
     }
+
+    public String getUser(int number) {
+        return user.get(number);
+    }
+    
+    
 }

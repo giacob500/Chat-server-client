@@ -39,6 +39,11 @@ public class ChatPanel extends javax.swing.JFrame {
 
         titleUser.setEditable(false);
         titleUser.setText("*Name*");
+        titleUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titleUserActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -84,6 +89,11 @@ public class ChatPanel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void titleUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleUserActionPerformed
+       EchoClient t1 = new EchoClient();
+       t1.getUser(0);
+    }//GEN-LAST:event_titleUserActionPerformed
 
     /**
      * @param args the command line arguments

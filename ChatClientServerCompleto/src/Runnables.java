@@ -52,9 +52,9 @@ public class Runnables implements Runnable {
                     stringaOut = new OutputStreamWriter(listaSocket.get(i).getOutputStream());
                     buffer = new BufferedWriter(stringaOut);
                     out = new PrintWriter(buffer, true);
-                    if(mySock != listaSocket.get(i)){
+                    //if(mySock != listaSocket.get(i)){
                         out.println(str);
-                    }
+                    //}
                 }
             }
 
