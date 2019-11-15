@@ -1,4 +1,12 @@
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 /*
@@ -15,8 +23,13 @@ public class ChatPanel extends javax.swing.JFrame {
 
     public ArrayList<String> user = new ArrayList<>();
     String indirizzo;
-        
+    String str;
     @SuppressWarnings("empty-statement")
+    
+    // creazione stream di output su socket
+            
+            PrintWriter out;
+    
     
     /**
      * Creates new form ChatPanel
@@ -24,6 +37,49 @@ public class ChatPanel extends javax.swing.JFrame {
     public ChatPanel() {
         show();
         initComponents();
+    }
+    
+    public ChatPanel(String str) throws IOException{
+        indirizzo = "172.16.3.226";
+        this.str=str;
+        try {
+// creazione socket
+            Socket socket = new Socket(indirizzo, EchoServer.PORT);
+            System.out.println("EchoClient: avviato");
+            System.out.println("Socket del client: " + socket);
+// creazione dell'utente
+            String userInput;
+            
+            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+            // input str = stdIn.readLine();
+            user.add(str);
+// creazione stream di input da socket
+            /*InputStreamReader isr = new InputStreamReader(socket.getInputStream());
+            BufferedReader in = new BufferedReader(isr);*/
+            RunnablesClient r = new RunnablesClient(socket, user);
+            Thread t1 = new Thread(r);
+            t1.start();
+// creazione stream di output su socket
+            OutputStreamWriter osw = new OutputStreamWriter(socket.getOutputStream());
+            BufferedWriter bw = new BufferedWriter(osw);
+            PrintWriter out = new PrintWriter(bw, true);
+            this.out = out;
+            // chiudo gli oggetti stream e socket
+            out.close();
+            //in.close();
+            stdIn.close();
+            socket.close();
+            t1.stop();
+            user.remove(str);
+
+        } catch (UnknownHostException e) {
+            System.err.println("Host non riconosciuto... " + indirizzo);
+            System.exit(1);
+        } catch (IOException e) {
+            System.err.println("Non riesco ad avere I/O per la connessione a: " + indirizzo);
+            System.exit(1);
+        }
+        System.out.println("EchoClient: passo e chiudo...");
     }
 
     /**
@@ -110,13 +166,7 @@ public class ChatPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_titleUserActionPerformed
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-        userInput = stdIn.readLine();
-                if (userInput.equals("quit")) {
-                    out.println(str + " ha abbandonato la chat ");
-                    out.println("quit");
-                    break;
-                }
-                out.println(str + ": " + userInput);
+        out.println(str + ": " + textBox.getText());
     }//GEN-LAST:event_sendButtonActionPerformed
 
     /**
