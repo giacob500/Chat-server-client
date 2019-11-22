@@ -17,7 +17,7 @@ import java.util.ArrayList;
 sulla stessa macchina), altrimenti si possono passare da linea di comando l’indirizzo IP o il nome della macchina
 remota */
 
-        indirizzo = "172.16.3.226";
+        indirizzo = "localhost";
         
         try {
 // creazione socket

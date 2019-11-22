@@ -34,13 +34,11 @@ public class ChatPanel extends javax.swing.JFrame {
     /**
      * Creates new form ChatPanel
      */
-    public ChatPanel() {
-        show();
-        initComponents();
-    }
     
     public ChatPanel(String str) throws IOException{
-        indirizzo = "172.16.3.226";
+        show();
+        initComponents();
+        indirizzo = "localhost";
         this.str=str;
         try {
 // creazione socket
