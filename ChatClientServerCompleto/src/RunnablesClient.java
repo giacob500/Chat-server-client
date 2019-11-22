@@ -30,6 +30,7 @@ public class RunnablesClient implements Runnable {
             InputStreamReader isr = new InputStreamReader(mySock.getInputStream());
             BufferedReader in = new BufferedReader(isr);
             while (true) {
+                ChatPanel refresh = new ChatPanel(in.readLine(), 0);
                 if(in.equals("quit"))break;
                 System.out.println(in.readLine());
             }

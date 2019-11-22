@@ -33,6 +33,10 @@ public class ChatPanel extends javax.swing.JFrame {
     /**
      * Creates new form ChatPanel
      */
+        
+    public ChatPanel(String messaggioaltrui, int valoreinutile){
+        display.append(messaggioaltrui + "\n");
+    }
     
     public ChatPanel(String str) throws IOException{
         show();
@@ -83,7 +87,7 @@ public class ChatPanel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         titleUser = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        display = new javax.swing.JTextArea();
         textBox = new javax.swing.JTextField();
         sendButton = new javax.swing.JButton();
 
@@ -92,19 +96,22 @@ public class ChatPanel extends javax.swing.JFrame {
         jLabel1.setText("Chat di");
 
         titleUser.setEditable(false);
-        titleUser.setText("*Name*");
         titleUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titleUserActionPerformed(evt);
             }
         });
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        display.setEditable(false);
+        display.setColumns(20);
+        display.setRows(5);
+        jScrollPane1.setViewportView(display);
 
-        textBox.setText("Scrivi un messaggio");
+        textBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textBoxActionPerformed(evt);
+            }
+        });
 
         sendButton.setText("Send");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
@@ -151,13 +158,17 @@ public class ChatPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void titleUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleUserActionPerformed
-       EchoClient t1 = new EchoClient();
-       t1.getUser(0);
+       titleUser.setText(str);
     }//GEN-LAST:event_titleUserActionPerformed
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         out.println(str + ": " + textBox.getText());
+        //display.append(str + ": " + textBox.getText() + "\n");
     }//GEN-LAST:event_sendButtonActionPerformed
+    
+    private void textBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,9 +208,9 @@ public class ChatPanel extends javax.swing.JFrame {
     ***/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JTextArea display;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton sendButton;
     private javax.swing.JTextField textBox;
     private javax.swing.JTextField titleUser;
