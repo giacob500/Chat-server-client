@@ -30,7 +30,6 @@ public class ChatPanel extends javax.swing.JFrame {
             
             PrintWriter out;
     
-    
     /**
      * Creates new form ChatPanel
      */
@@ -62,14 +61,7 @@ public class ChatPanel extends javax.swing.JFrame {
             BufferedWriter bw = new BufferedWriter(osw);
             PrintWriter out = new PrintWriter(bw, true);
             this.out = out;
-            // chiudo gli oggetti stream e socket
-            out.close();
-            //in.close();
-            stdIn.close();
-            socket.close();
-            t1.stop();
-            user.remove(str);
-
+           
         } catch (UnknownHostException e) {
             System.err.println("Host non riconosciuto... " + indirizzo);
             System.exit(1);
@@ -77,7 +69,6 @@ public class ChatPanel extends javax.swing.JFrame {
             System.err.println("Non riesco ad avere I/O per la connessione a: " + indirizzo);
             System.exit(1);
         }
-        System.out.println("EchoClient: passo e chiudo...");
     }
 
     /**
@@ -108,6 +99,7 @@ public class ChatPanel extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -146,13 +138,13 @@ public class ChatPanel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(titleUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sendButton))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
