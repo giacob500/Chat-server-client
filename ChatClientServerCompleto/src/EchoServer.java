@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class EchoServer {
 
-    public static final int PORT = 5000; // porta al di fuori del range 1-4096 !
+    public static final int PORT = 5001; // porta al di fuori del range 1-4096 !
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(PORT);
