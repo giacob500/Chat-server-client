@@ -54,6 +54,7 @@ public class ChatPanel extends javax.swing.JFrame {
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
             // input str = stdIn.readLine();
             user.add(str);
+            titleUser.setText(str);
 // creazione stream di input da socket
             /*InputStreamReader isr = new InputStreamReader(socket.getInputStream());
             BufferedReader in = new BufferedReader(isr);*/
@@ -96,7 +97,6 @@ public class ChatPanel extends javax.swing.JFrame {
         jLabel1.setText("Chat di");
 
         titleUser.setEditable(false);
-        titleUser.setText("user");
         titleUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 titleUserActionPerformed(evt);
@@ -132,7 +132,7 @@ public class ChatPanel extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(titleUser, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(titleUser))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -159,7 +159,7 @@ public class ChatPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void titleUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleUserActionPerformed
-       titleUser.setText(str);
+        
     }//GEN-LAST:event_titleUserActionPerformed
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed

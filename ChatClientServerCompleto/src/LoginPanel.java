@@ -101,7 +101,7 @@ public class LoginPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        //username.getText();
+        //username.getText();      
         try {
             ChatPanel t = new ChatPanel(username.getText());
         } catch (IOException ex) {
