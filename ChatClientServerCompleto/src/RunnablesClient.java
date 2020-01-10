@@ -32,7 +32,7 @@ public class RunnablesClient implements Runnable {
             while (true) {
                 ChatPanel refresh = new ChatPanel(in.readLine(), 0);
                 if(in.equals("quit"))break;
-                System.out.println(in.readLine());
+                //System.out.println(in.readLine());
             }
         } catch (IOException ex) {
             System.out.println("EchoServer: chiudo...");

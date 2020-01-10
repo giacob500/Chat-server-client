@@ -36,6 +36,11 @@ public class ChatPanel extends javax.swing.JFrame {
         
     public ChatPanel(String messaggioaltrui, int valoreinutile){
         display.append(messaggioaltrui + "\n");
+   
+    }
+    
+    public void refresh(String messaggioaltrui) {
+        display.append(messaggioaltrui + "\n");
     }
     
     public ChatPanel(String str) throws IOException{
@@ -91,8 +96,6 @@ public class ChatPanel extends javax.swing.JFrame {
         display = new javax.swing.JTextArea();
         textBox = new javax.swing.JTextField();
         sendButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,10 +126,6 @@ public class ChatPanel extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("NOTA: Dopo che il primo messaggio è stato inviato, ");
-
-        jLabel3.setText("per inviare i seguenti bisogna cliaccare \"Invia\" 2 volte");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,12 +141,7 @@ public class ChatPanel extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)))
+                        .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -163,10 +157,6 @@ public class ChatPanel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sendButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -178,6 +168,7 @@ public class ChatPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_titleUserActionPerformed
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
+        System.out.println("I debug");
         out.println(str + ": " + textBox.getText());
         //display.append(str + ": " + textBox.getText() + "\n");
     }//GEN-LAST:event_sendButtonActionPerformed
@@ -228,8 +219,6 @@ public class ChatPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea display;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton sendButton;
     private javax.swing.JTextField textBox;
