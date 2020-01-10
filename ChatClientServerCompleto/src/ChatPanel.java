@@ -98,6 +98,7 @@ public class ChatPanel extends javax.swing.JFrame {
         sendButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Chat di");
 
@@ -168,7 +169,7 @@ public class ChatPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_titleUserActionPerformed
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-        System.out.println("I debug");
+        //System.out.println("I debug");
         out.println(str + ": " + textBox.getText());
         //display.append(str + ": " + textBox.getText() + "\n");
     }//GEN-LAST:event_sendButtonActionPerformed
