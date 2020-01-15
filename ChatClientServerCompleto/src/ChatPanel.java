@@ -38,11 +38,7 @@ public class ChatPanel extends javax.swing.JFrame {
         display.append(messaggioaltrui + "\n");
    
     }
-    
-    public void refresh(String messaggioaltrui) {
-        display.append(messaggioaltrui + "\n");
-    }
-    
+       
     public ChatPanel(String str) throws IOException{
         show();
         initComponents();
