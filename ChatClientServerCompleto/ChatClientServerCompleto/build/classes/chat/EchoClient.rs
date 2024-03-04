@@ -1,2 +1,0 @@
-EchoClient
-chat.NewClass
